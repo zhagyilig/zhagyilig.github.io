@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "Latest Posts in *linux*"
+title: "Latest Posts in linux"
 excerpt: "Intresting things in the linux world"
 
 ---
