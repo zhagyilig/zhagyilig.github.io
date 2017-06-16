@@ -1,7 +1,7 @@
 ---
 layout: archive
 permalink: /mysql/
-title: "Latest Posts in *mysql*"
+title: "Latest Posts in mysql"
 excerpt: "I make living from IT"
 ---
 
