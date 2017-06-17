@@ -1,4 +1,3 @@
-
 ---
 layout: article
 title: "Happy Father's Day"
