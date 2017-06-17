@@ -1,7 +1,7 @@
 ---
 layout: archive
-title: "Latest Posts in jekyll"
-excerpt: "Introduction of how to build a blog like this from scratch"
+title: "Latest Posts in life"
+excerpt: "Life bit by bit"
 ---
 
 <div class="tiles">
