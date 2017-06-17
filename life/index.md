@@ -5,7 +5,7 @@ excerpt: "Life is a sail trip full of chances and challenges."
 ---
 
 <div class="tiles">
-{% for post in site.categories.life %}
+{% for post in site.categories.jekyll %}
 	{% include post-grid.html %}
 {% endfor %}
 </div><!-- /.tiles -->
