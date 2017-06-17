@@ -1,10 +1,10 @@
-
-out: article
-le:  "每天都是父亲节"
-e:   2017-06-17 22:00:08
-ge:
- teaser: /teaser/father.jpg
-egories: jekyll
+---
+layout: article
+title:  "Happy Father's Day"
+image:
+    teaser: /teaser/father.jpg
+categories: jekyll
+---
 
 > 世界上还有一种爱，却是默默的，它不轻易表现出来，就是父爱。
 
