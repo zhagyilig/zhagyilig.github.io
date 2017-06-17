@@ -1,6 +1,8 @@
+
 ---
 layout: article
-title:  "Happy Father's Day"
+title: "Happy Father's Day"
+date:  2017-06-17 22:00:08
 image:
     teaser: /teaser/father.jpg
 categories: jekyll
