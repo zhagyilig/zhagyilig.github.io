@@ -5,7 +5,7 @@ excerpt: "Life bit by bit"
 ---
 
 <div class="tiles">
-{% for post in site.categories.jekyll %}
+{% for post in site.categories.life %}
 	{% include post-grid.html %}
 {% endfor %}
 </div><!-- /.tiles -->
