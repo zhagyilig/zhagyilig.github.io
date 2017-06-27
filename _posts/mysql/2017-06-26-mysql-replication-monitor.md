@@ -6,8 +6,6 @@ image:
     teaser: /teaser/mysql rep.png
 ---
 
-## 线上MySQL主从复制延迟一例  
-
 >发现MySQL的复制（replication）进度总是落后很多肿么办？  
 >MySQL复制（replication）是否有延迟，延迟多厉害，只看Seconds_Behind_Master是否可靠？  
   
