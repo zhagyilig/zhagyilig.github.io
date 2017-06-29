@@ -26,7 +26,8 @@ ORACLE MySQL 5.6版本开始支持多线程复制，配置选项` slave_parallel
 
 综合这两个主要原因，slave想要尽可能及时跟上master的进度，可以尝试采用以下几种方法：  
 
-- 采用MariaDB发行版，它实现了相对真正意义上的并行复制，其效果远比ORACLE MySQL好的很多。在我的场景中，采用MariaDB作为slave的实例，几乎总是能及时跟上master。如果不想用这个版本的话，那就老实等待官方5.7大版本发布吧； 关于MariaDB的Parallel Replication具体请参考：`Replication and Binary Log Server System Variables#slave_parallel_threads - MariaDB Knowledge Base`    
+- 采用MariaDB发行版，它实现了相对真正意义上的并行复制，其效果远比ORACLE MySQL好的很多。在我的场景中，采用MariaDB作为slave的实例，几乎总是能及时跟上master。如果不想用这个版本的话，那就老实等待官方5.7大版本发布吧； 关于MariaDB的Parallel Replication具体请参考：`Replication and Binary Log` 
+`Server System Variables#slave_parallel_threads - MariaDB Knowledge Base`    
 - 每个表都要显式指定主键，没有指定主键的话，会导致在row模式下，每次修改都要全表扫描，尤其是大表就非常可怕了，延迟会更严重，甚至导致整个slave库都被挂起,下面的故障就是指定主键导致；  
 - 应用程序端多做些事，让MySQL端少做事，尤其是和IO相关的活动，例如：前端通过内存CACHE或者本地写队列等，合并多次读写为一次，甚至消除一些写请求；    
 - 进行合适的分库、分表策略，减小单库单表复制压力，避免由于单库单表的的压力导致整个实例的复制延迟；
@@ -41,7 +42,8 @@ ORACLE MySQL 5.6版本开始支持多线程复制，配置选项` slave_parallel
 
 ### MySQL复制延迟一例
 **1.发现问题**
-
+{% highlight mysql %}
+{% raw %}	
 	root@linux-node3.mysql01.zyl (none) >show slave status\G  
 		********** 1. row **********
                Slave_IO_State: Waiting for master to send event
@@ -64,38 +66,42 @@ ORACLE MySQL 5.6版本开始支持多线程复制，配置选项` slave_parallel
           Read_Master_Log_Pos: 345703585
           Exec_Master_Log_Pos: 127824051
         Seconds_Behind_Master: 1178062  
-
+{% endraw %}
+{% endhighlight %}
 **2.定位问题**  
   省略一万字，无非就是在群里大吼，哈哈...  
   开发同事在半个月前向该MySQL server中新加一个库。巧了，延迟时间就是快半个月，于是快速定位出现问题的表。    
-	
-	root@linux-node3.mysql01.zyl (xxx) >show create tabels v_fam_sign_focusgroups_levelone;  
-	`fam_id` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
-  	`fam_name` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
- 	`teamid` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
-	`team_name` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
- 	`sign_orgid` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
-	`sign_date` varchar(10) CHARACTER SET utf8 DEFAULT NULL,
- 	`sign_count` bigint(21) NOT NULL DEFAULT '0',
-  	`type` varchar(10) CHARACTER SET utf8 NOT NULL DEFAULT '',
-  	`hospital_name_levelone` varchar(30) CHARACTER SET utf8 DEFAULT NULL,
-  	`hospital_name_leveltwo` varchar(30) CHARACTER SET utf8 DEFAULT NULL,
-  	`hospital_name_levelthree` varchar(30) CHARACTER SET utf8 DEFAULT NULL,
-  	`country` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
-  	`sign_orgid_lv2` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
-  	`sign_orgid_lv3` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
-  	`ctiy` varchar(32) CHARACTER SET utf8 DEFAULT NULL
-	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
-	
-	root@localhost healthcloud_famdoc > show index from v_fam_sign_focusgroups_levelone;
-	Empty set (0.00 sec)
+{% highlight mysql %}
+{% raw %}	
+root@linux-node3.mysql01.zyl (xxx) >show create tabels v_fam_sign_focusgroups_levelone;  
+`fam_id` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
+`fam_name` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+`teamid` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
+`team_name` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
+`sign_orgid` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
+`sign_date` varchar(10) CHARACTER SET utf8 DEFAULT NULL,
+`sign_count` bigint(21) NOT NULL DEFAULT '0',
+`type` varchar(10) CHARACTER SET utf8 NOT NULL DEFAULT '',
+`hospital_name_levelone` varchar(30) CHARACTER SET utf8 DEFAULT NULL,
+`hospital_name_leveltwo` varchar(30) CHARACTER SET utf8 DEFAULT NULL,
+`hospital_name_levelthree` varchar(30) CHARACTER SET utf8 DEFAULT NULL,
+`country` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
+`sign_orgid_lv2` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
+`sign_orgid_lv3` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
+`ctiy` varchar(32) CHARACTER SET utf8 DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
 
-	显然，百万条数据的大表，竟然没主键。
+root@localhost healthcloud_famdoc > show index from v_fam_sign_focusgroups_levelone;
+Empty set (0.00 sec)
 
+显然，百万条数据的大表，竟然没主键。
+{% endraw %}
+{% endhighlight %}
 **3.解决问题**   
 3.1 新建表指定主键  
 3.2 xtrabackup搭主从    
-  
+{% highlight mysql %}
+{% raw %} 
  	    ...
  	 PRIMARY KEY (`id`)
 	 ) ENGINE=InnoDB AUTO_INCREMENT=1229006 DEFAULT CHARSET=utf8mb4
@@ -108,32 +114,37 @@ ORACLE MySQL 5.6版本开始支持多线程复制，配置选项` slave_parallel
 	| v_fam_sign_focusgroups_levelone_two |          0 | PRIMARY  |            1 | id          | A         |     1222916 |     NULL | NULL   |      | BTREE      |         |               |
 	+-------------------------------------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
 	1 row in set (0.00 sec)   
-
-	XtraBackup搭建主从：
-		知识准备：
-		1、在备份InnoDB的过程中，记录的变更保存于xtrabackup_logfile文件，所以在prepare(–apply-log)的时候，需要重放该部分数据到表空间。
-		2、如果库中只使用了innodb或者XtraDB引擎，恢复的时候使用xtrabackup_binlog_pos_innodb文件确定pos信息;
-		3、如果还有其他引擎(如MyISAM)，恢复的时候使用xtrabackup_binlog_info确定pos信息;
+{% endraw %}
+{% endhighlight %}
+XtraBackup搭建主从：
+知识准备：
+1、在备份InnoDB的过程中，记录的变更保存于xtrabackup_logfile文件，所以在prepare(–apply-log)的时候，需要重放该部分数据到表空间。
+2、如果库中只使用了innodb或者XtraDB引擎，恢复的时候使用xtrabackup_binlog_pos_innodb文件确定pos信息;
+3、如果还有其他引擎(如MyISAM)，恢复的时候使用xtrabackup_binlog_info确定pos信息;
 	
-	1.这主库上进行全备，然后进行prepare
-	backup:
-	[root@linux-node3 log]# innobackupex --defaults-file='/etc/my.cnf' --user=root --password=it.zhagyilig.info --user-memory=4096M  --no-timetamp --backup /opt/   
-   
- 	prepare:
-	[root@linux-node3 log]#innobackupex  --defaults-file='/etc/my.cnf' --apply-log  2017-06-26_20-53-59/ 
+1.这主库上进行全备，然后进行prepare
+{% highlight mysql %}
+{% raw %} 
+backup:
+[root@linux-node3 log]# innobackupex --defaults-file='/etc/my.cnf' --user=root --password=it.zhagyilig.info --user-memory=4096M  --no-timetamp --backup /opt/   
 
-	2.将备份进行压缩，拷贝到slave
-  
+prepare:
+[root@linux-node3 log]#innobackupex  --defaults-file='/etc/my.cnf' --apply-log  2017-06-26_20-53-59/ 
+{% endraw %}
+{% endhighlight %}  
+
+2.将备份进行压缩，拷贝到slave
+
 	rsync -avzp 2017-06-26_20-53-59/ xxx@xxx:/tmp/  
-	
-	3.删除之前的日志文件，数据，一般在data目录，并move-back全备。
-	注意：在删除bin-log的日志：purge 命令
-     
+
+3.删除之前的日志文件，数据，一般在data目录，并move-back全备。
+注意：在删除bin-log的日志：purge 命令
+ 
 	cd /data/mysql/data/
 	innobackupex  --move-back /tmp/2017-06-26_20-53-59/
-	
-	注意：也可用--copy-back，不过--move-back效率更高。
-	
+
+注意：也可用--copy-back，不过--move-back效率更高。
+
 **4.配置slave**
 
 	[root@linux-mysql-slave data]# cat xtrabackup_binlog_pos_innodb
