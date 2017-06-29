@@ -40,3 +40,5 @@ Ipmitool工具查看了下，确实是有内存告警，如下图：
 3、ipmitool sel list查看硬件日志    
 4、远程管理页面上的日志（DELL的IDRAC，HP的ILO，IBM的IMM等等）  
 5、smart日志      
+
+[**阅读原文·叶老师**](https://mp.weixin.qq.com/s/R5azA-ZTs1va3Zsjzm_lxQ)
