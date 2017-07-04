@@ -282,4 +282,3 @@ pt-kill –match-command Query –match-state “Copying to tmp table” busy-ti
 #### 4.pt-table-checksum 
 
 生产环境使用 pt-table-checksum 检查MySQL数据一致性，公司数据中心从托管机房迁移到阿里云，需要对mysql迁移（Replication）后的数据一致性进行校验，但又不能对生产环境使用造成影响，pt-table-checksum 成为了绝佳也是唯一的检查工具。
-
