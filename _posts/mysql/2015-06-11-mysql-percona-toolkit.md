@@ -26,14 +26,23 @@ image:
 {% raw %} 
 编译安装percona-toolkit-2.2.2
 perl Makefile.PL
-Checking if your kit is complete...
+1.Checking if your kit is complete...
 Looks good
 Warning: prerequisite DBD::mysql 3 not found.
 Writing Makefile for percona-toolkit
 
+2.error: Failed dependencies:
+	perl(IO::Socket::SSL) is needed by percona-toolkit-3.0.3-1.el6.x86_64
+	
+3.error: Failed dependencies:
+	perl(Term::ReadKey) is needed by percona-toolkit-3.0.3-1.el6.x86_64
 解决方案：
 安装缺少的包
-yum install perl-DBD-MySQL
+1.yum install perl-DBD-MySQL
+
+2.yum install perl-IO-Socket-SSL  
+
+3.yum install perl-Time-HiRes
 然后，重新编译
 perl Makefile.PL 
 Writing Makefile for percona-toolkit
