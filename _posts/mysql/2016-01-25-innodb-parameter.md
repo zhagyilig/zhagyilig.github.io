@@ -6,7 +6,8 @@ categories: mysql
 image:
     teaser: /teaser/innodb.jpg
 ---
-
+> 常用的一些参数
+---
 #### Innodb_buffer_pool_pages_free
 发现`Innodb_buffer_pool_pages_free` 为 0，则说明 `buffer pool` 已经被用光，需要增大`innodb_buffer_pool_size`
 
@@ -33,10 +34,12 @@ innodb_io_capacity|磁盘配置
 述了大多数写IO(除了写InnoDB日志)是后台操作的. 如果你深度了解硬件性能(如每秒可以执行多少次IO操作),则使用这些功能是很可取
 的,而不是让它闲着。  
 有一个很好的类比示例:  假如某次航班一张票也没有卖出去 —— 那么让稍后航班的一些人乘坐该次航班,有可能是很好的策略,以防后面遇到恶劣的天气. 即有机会就将后台操作顺便处理了,以减少同稍后可能的实时操作产生竞争。  
+
 有一个很简单的计算:  如果每个磁盘每秒读写(IOPS)可以达到 200次, 则拥有10个磁盘的 RAID10 磁盘阵列IOPS理论上 =(10/2)* 
 200 = 1000. 我说它“很简单”,是因为RAID控制器通常能够提供额外的合并,并有效提高IOPS能力. 对于SSD磁盘,IOPS可以轻松达到好几千。  
 将这两个值设置得太大可能会存在某些风险,你肯定不希望后台操作妨碍了前台任务IO操作的性能. 过去的经验表明,将这两个值设置的太
-高,InnoDB持有的内部锁会导致性能降低(按我了解到的信息,在MySQL5.6中这得到了很大的改进)。  
+高,InnoDB持有的内部锁会导致性能降低(按我了解到的信息,在MySQL5.6中这得到了很大的改进)。    
+
 innodb_lru_scan_depth - 默认值为 1024(mysql 5.7 默认是4000). 这是mysql 5.6中引入的一个新选项. Mark Callaghan   
 提供了 一些配置建议. 简单来说,如果增大了 innodb_io_capacity 值, 应该同时增加 innodb_lru_scan_depth.  
 
@@ -49,20 +52,19 @@ innodb_lru_scan_depth - 默认值为 1024(mysql 5.7 默认是4000). 这是mysql 
 
 
 #### innodb_purge_threads = 1
-InnoDB中的清除操作是一类定期回收无用数据的操作。在之前的几个版本中，清除操作是主线程的一部分，这意味着运行时它可能会堵塞其
-它的数据库操作。
+InnoDB中的清除操作是一类定期回收无用数据的操作。在之前的几个版本中，清除操作是主线程的一部分，这意味着运行时它可能会堵塞其它的数据库操作。
 
 
-####innodb_log_file_size
+#### innodb_log_file_size
 这是redo日志的大小。redo日志被用于确保写操作快速而可靠并且在崩溃时恢复。一直到MySQL 5.1，它都难于调整，因为一方面你想让它
 更大来提高性能，另一方面你想让它更小来使得崩溃后更快恢复。幸运的是从MySQL 5.5之后，崩溃恢复的性能的到了很大提升，这样你就
 可以同时拥有较高的写入性能和崩溃恢复性能了。一直到MySQL 5.5，redo日志的总尺寸被限定在4GB(默认可以有2个log文件)。这在
 MySQL 5.6里被提高。  
 
-####innodb_log_buffer_size
+#### innodb_log_buffer_size
 这项配置决定了为尚未执行的事务分配的缓存。其默认值（1MB）一般来说已经够用了，但是如果你的事务中包含有二进制大对象或者大文本
-字段的话，这点缓存很快就会被填满并触发额外的I/O操作。看看Innodb_log_waits状态变量，如果它不是0，增加
-innodb_log_buffer_size。
+字段的话，这点缓存很快就会被填满并触发额外的I/O操作。看看Innodb_log_waits状态变量，如果它不是0，增加`innodb_log_buffer_size`。
+---
 
 变量|状态|解释
 -|-|-
@@ -108,26 +110,3 @@ Innodb_rows_deleted | 7199 |删除
 Innodb_rows_inserted | 736893 |插入
 Innodb_rows_read | 10400853035 |从InnoDB表读取的行数
 Innodb_rows_updated | 932768 |更新
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
