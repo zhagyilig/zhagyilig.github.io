@@ -5,8 +5,10 @@ modified:
 categories: mysql
 image:
     teaser: /teaser/innodb.jpg
----
-> 常用的一些参数
+---  
+
+> 常用的一些参数  
+
 ---
 #### Innodb_buffer_pool_pages_free
 发现`Innodb_buffer_pool_pages_free` 为 0，则说明 `buffer pool` 已经被用光，需要增大`innodb_buffer_pool_size`
