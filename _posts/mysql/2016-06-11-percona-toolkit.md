@@ -1,7 +1,6 @@
-
 ---
 layout: article
-title: "percona-toolkit 简介"
+title: "percona-toolkit 工具集"
 modified:
 categories: mysql
 image:
