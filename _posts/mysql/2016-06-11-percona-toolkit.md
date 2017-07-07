@@ -7,7 +7,8 @@ image:
     teaser: /teaser/tool.jpg
 ---
 
-> 使用percona-toolkit 吧！这些工具主要包括开发、性能、配置、监控、复制、系统、实用六大类，作为一个优秀的DBA，里面有的工具非常有用，如果能掌握并加以灵活应用，将能极大的提高工作效率。
+> 使用percona-toolkit 吧！这些工具主要包括开发、性能、配置、监控、复制、系统、实用六大类，作为一个优秀的DBA，里面有的工具非常有用，如果能掌握并加以灵活应用，将能极大的提高工作效率。  
+
 ---
 
 ## 一.percona-toolkit 功能
@@ -128,23 +129,23 @@ pt-query-digest  --type=binlog  mysql-bin000093.sql > slow_report10.log
 `pt-heartbeat -D game --update -h master-server --daemonize`
 
 (4)监控从的延迟情况：
-`pt-heartbeat -D game --monitor -h slave-server  #一直执行，不退出`
-`pt-heartbeat -D game --check h=slave-server     #执行一次就退出`
+`pt-heartbeat -D game --monitor -h slave-server		#一直执行，不退出`
+`pt-heartbeat -D game --check h=slave-server		#执行一次就退出`
 
-注意：需要指定的参数至少有 `--stop，--update，--monitor，--check。`其中`--update，--monitor和--check`是互斥的，`--daemonize`和`--check`也是互斥。
+注意：需要指定的参数至少有 `--stop，--update，--monitor，--check`其中`--update，--monitor`和`--check`是互斥的，`--daemonize`和`--check`也是互斥。
 
 (5)参数解析
 {% highlight mysql %}
 {% raw %}
---ask-pass 隐式输入MySQL密码
+--ask-pass	  隐式输入MySQL密码
 
---charset 字符集设置
+--charset 	  字符集设置
 
---check 检查从的延迟，检查一次就退出，除非指定了--recurse会递归的检查所有的从服务器
+--check 	  检查从的延迟，检查一次就退出，除非指定了--recurse会递归的检查所有的从服务器
 
 --check-read-only 如果从服务器开启了只读模式，该工具会跳过任何插入
 
---create-table 在主上创建心跳监控的表，如果该表不存在。可以自己建立，建议存储引擎改成memory。通过更新该表知道主从延迟的差距。
+--create-table    在主上创建心跳监控的表，如果该表不存在。可以自己建立，建议存储引擎改成memory。通过更新该表知道主从延迟的差距。
 
 CREATE TABLE heartbeat (
   ts                    varchar(26) NOT NULL,
@@ -246,23 +247,23 @@ pt-heartbeat -D slave_monitor --ask-pass --table=heartbeat --monitor --host=172.
 (1)参数:
 {% highlight mysql %}
 {% raw %}
-–busy-time运行时间
+–busy-time	运行时间
 
-–idle-time空闲时间
+–idle-time	空闲时间
 
-–victims所有匹配的连接，对应有最久的连接
+–victims	所有匹配的连接，对应有最久的连接
 
-–interval间隔时间，默认30s，有点长，可以根据实际情况来调节
+–interval	间隔时间，默认30s，有点长，可以根据实际情况来调节
 
-–print 打印出来kill掉的连接
+–print 		打印出来kill掉的连接
 
-–match-command匹配当前连接的命令
+–match-command	匹配当前连接的命令
 Query Sleep Binlog DumpConnectDelayed insertExecuteFetchInit DBKillPrepareProcesslistQuitReset stmtTable Dump
 
-–match-state匹配当前连接的状态
+–match-state	匹配当前连接的状态
 Lockedlogincopy to tmp tableCopying to tmp tableCopying to tmp table on diskCreating tmp tableexecutingReading from netSending dataSorting for orderSorting resultTable lockUpdating
 
-–match-info使用正则表达式匹配符合的sql
+–match-info	使用正则表达式匹配符合的sql
 
 –match-db –match-user –match-host见名知意
 {% endraw %}
