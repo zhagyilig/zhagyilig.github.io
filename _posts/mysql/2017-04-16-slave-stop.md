@@ -40,7 +40,6 @@ image:
          Relay_Log_Space: 4139172581
 {% endraw %}
 {% endhighlight %}  
-
 从processlist的中也看不出来有什么不对劲的SQL在跑：  
 {% highlight mysql %}
 {% raw %}
@@ -98,12 +97,11 @@ BEGIN
 上面这段内容的几个关键信息：        
 {% highlight mysql %}  
 {% raw %}
- //at 294959        — binlog起点    
+#at 294959        — binlog起点    
 thread_id=461151  — master上执行的线程ID    
 exec_time=2144    — 该事务执行总耗时    
 {% endraw %}
 {% endhighlight %}     
-
 再往下看都是一堆的binlog position信息，通过这种方式可读性不强，我们换一种姿势看看：  
 {% highlight mysql %}  
 {% raw %}
@@ -149,4 +147,6 @@ exec_time=2144    — 该事务执行总耗时
 
 除了会导致SLAVE看起来一直不动以外，还可能会导致某些数据行（data rows）被长时间锁定不释放，而导致大量行锁等待发生。      
 
-其他导致SLAVE复制进度看起来停滞了的可能原因：设置了Replicate Ignore/Do DB/Table规则，不符合规则的binlog event都会被忽略，从而看起来像是复制停滞不前。    
+其他导致SLAVE复制进度看起来停滞了的可能原因：设置了Replicate Ignore/Do DB/Table规则，不符合规则的binlog event都会被忽略，从而看起来像是复制停滞不前。     
+
+[**阅读原文~叶老师**](https://mp.weixin.qq.com/s?__biz=MjM5NzAzMTY4NQ==&mid=506446074&idx=3&sn=5bc1eb59d278e545ab5ea836437ea162&scene=19#wechat_redirect)
