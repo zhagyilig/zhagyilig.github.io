@@ -22,8 +22,11 @@ mysql对于排序,使用了两个变量来控制`sort_buffer_size`和`max_length
 [https://dev.mysql.com/doc/refman/5.7/en/order-by-optimization.html](https://dev.mysql.com/doc/refman/5.7/en/order-by-optimization.html)  
 {% highlight mysql %}
 {% raw %}
-The tuples used by the modified filesort algorithm are longer than the pairs used by the original algorithm, and fewer of them fit in the sort buffer. As a result, it is possible for the extra I/O to make the modified approach slower, not faster. To avoid a slowdown, the optimizer uses the modified algorithm only if the total size of the extra columns in the sort tuple does not exceed the value of the max_length_for_sort_data system variable. (A symptom of setting the value of this variable too high is a combination of high disk activity and low CPU activity.)
-{% endraw %}
+The tuples used by the modified filesort algorithm are longer than the pairs used by the original algorithm, and fewer of them fit in the sort
+ buffer. As a result, it is possible for the extra I/O to make the modified approach slower, not faster. To avoid a slowdown, the optimizer 
+ uses the modified algorithm only if the total size of the extra columns in the sort tuple does not exceed the value of the 
+ max_length_for_sort_data system variable. (A symptom of setting the value of this variable too high is a combination of high disk activity 
+ and low CPU activity.)  
 {% endhighlight %}
 　　
   
