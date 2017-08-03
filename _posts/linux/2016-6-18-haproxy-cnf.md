@@ -1,7 +1,7 @@
 ---
 layout: article
 title:  "haproxy安装到启动"
-categories: mysql
+categories: linux
 toc: true
 ads: true
 #    teaser: /teaser/default.jpg
