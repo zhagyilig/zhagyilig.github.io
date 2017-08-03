@@ -1,6 +1,6 @@
 ---
 layout: article
-title: "【硬件维护】多种日志轻松定位硬件故障"
+title: "多种日志轻松定位硬件故障"
 modified:
 categories: linux
 image:
