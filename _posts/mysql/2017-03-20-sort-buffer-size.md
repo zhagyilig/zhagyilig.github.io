@@ -27,7 +27,8 @@ The tuples used by the modified filesort algorithm are longer than the pairs use
  uses the modified algorithm only if the total size of the extra columns in the sort tuple does not exceed the value of the 
  max_length_for_sort_data system variable. (A symptom of setting the value of this variable too high is a combination of high disk activity 
  and low CPU activity.)  
-{% endhighlight %}
+{% endraw %}
+{% endhighlight %} 
 　　
   
 
