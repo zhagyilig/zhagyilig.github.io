@@ -4,7 +4,7 @@ title: "Innobackupex远程限流备份mysql数据库"
 modified:
 categories: mysql
 image:
-    teaser: /teaser/backup0.jp
+    teaser: /teaser/backup0.jpg
 ---
 
 > 需要将A机器上数据库备份到B机器，需要在B机器上开启一个端口利用nc和pv达到限速的目的。  
