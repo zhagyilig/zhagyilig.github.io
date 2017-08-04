@@ -4,7 +4,7 @@ title:  "optimize优化mysql"
 categories: mysql
 toc: true
 ads: true
-    teaser: ![teaser](http://ou529e3sj.bkt.clouddn.com/default.jpg)
+    teaser: /teaser/youhua.jpg
 ---  
 
 > optimize table在优化mysql    
