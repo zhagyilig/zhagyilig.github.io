@@ -1,6 +1,6 @@
 ---
 layout: article
-title:  "pxc集群线上监控的指标"
+title:  "pxc集群主要status监控"
 categories: mysql
 toc: true
 ads: true
@@ -8,9 +8,9 @@ image:
     teaser: ![teaser](http://ou529e3sj.bkt.clouddn.com/pxc.jpg)
 ---  
 
-> pxc集群线上监控的指标  
+> Percona XtraDB Cluster集群status监控指标介绍
 
-## 一、线上监控的指标
+## 一、监控status
 {% highlight mysql %}
 {% raw %}
 1、wsrep_local_state_comment
@@ -234,7 +234,7 @@ root@(none) 04:06:40>SHOW GLOBAL STATUS LIKE 'wsrep_cert_deps_distance';
 {% endraw %}
 {% endhighlight %}
 
-## 六检测网络慢的问题
+## 六、检测网络慢的问题
 通过检查发送队列来看传出的连接状况
 {% highlight mysql %}
 {% raw %}
