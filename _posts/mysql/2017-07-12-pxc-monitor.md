@@ -5,7 +5,7 @@ categories: mysql
 toc: true
 ads: true
 image:
-    teaser: ![teaser](http://ou529e3sj.bkt.clouddn.com/pxc.png)
+    teaser: ![teaser](http://ou529e3sj.bkt.clouddn.com/pxc.jpg)
 ---  
 
 > pxc集群线上监控的指标  
