@@ -1,7 +1,7 @@
 ---
 layout: article
 title:  "optimize优化mysql"
-categories: linux
+categories: mysql
 toc: true
 ads: true
 	teaser: ![teaser](http://ou529e3sj.bkt.clouddn.com/default.jpg)
