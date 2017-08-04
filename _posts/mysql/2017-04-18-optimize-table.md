@@ -1,10 +1,12 @@
 ---
 layout: article
 title:  "optimize优化mysql"
-categories: mysql
+categories: mysql  
+date:  2017-04-18 09:10:0
 toc: true
 ads: true
-    teaser: /teaser/youhua.jpg
+
+    teaser: ![teaser](http://ou529e3sj.bkt.clouddn.com/default.jpg)
 ---  
 
 > optimize table在优化mysql    
