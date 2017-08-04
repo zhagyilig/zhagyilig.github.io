@@ -5,8 +5,7 @@ categories: mysql
 date:  2017-04-18 09:10:0
 toc: true
 ads: true
-
-    teaser: ![teaser](http://ou529e3sj.bkt.clouddn.com/default.jpg)
+    teaser: /teaser/youhua.jpg
 ---  
 
 > optimize table在优化mysql    
@@ -211,9 +210,7 @@ OPTIMIZE TABLE。被删除的记录被保持在链接清单中，后续的INSERT
 在多数的设置中，您根本不需要运行OPTIMIZE TABLE。即使您对可变长度的行进行了大量的更新，您也不需要经常运行，每周一次或每月一次
 即可，只对特定的表运行。    
 OPTIMIZE TABLE只对MyISAM, BDB和InnoDB表起作用。      
-注意，在OPTIMIZE TABLE运行过程中，MySQL会锁定表。     
-
-[阅读原文](http://blog.51yip.com/mysql/1222.html)
+注意，在OPTIMIZE TABLE运行过程中，MySQL会锁定表。    
 
 
 
