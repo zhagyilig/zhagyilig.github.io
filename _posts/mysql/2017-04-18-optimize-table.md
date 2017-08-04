@@ -1,6 +1,6 @@
 ---
 layout: article
-title:  "haproxy安装到启动"
+title:  "optimize优化mysql"
 categories: linux
 toc: true
 ads: true
