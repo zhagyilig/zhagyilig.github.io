@@ -5,12 +5,12 @@ categories: mysql
 toc: true
 ads: true
 image:
-    teaser: ![pxc](http://ou529e3sj.bkt.clouddn.com/pxc.png)
+    teaser: ![teaser](http://ou529e3sj.bkt.clouddn.com/pxc.png)
 ---  
 
 > pxc集群线上监控的指标  
 
-## 一、线上监控的指标:
+## 一、线上监控的指标
 {% highlight mysql %}
 {% raw %}
 1、wsrep_local_state_comment
