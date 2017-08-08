@@ -4,12 +4,8 @@ title:  "pxc集群主要status监控"
 categories: mysql
 toc: true
 ads: true
-<<<<<<< HEAD
-	teaser: /teaser/mysql01.png
-=======
 image:
-    teaser: ![teaser](http://ou529e3sj.bkt.clouddn.com/pxc.jpg)
->>>>>>> d4302f56baf7c4dfdc7897377cf99059e131dbda
+    teaser: /teaser/mysql01.png
 ---  
 
 > Percona XtraDB Cluster集群status监控指标介绍
