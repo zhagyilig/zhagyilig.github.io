@@ -6,7 +6,7 @@ categories: mysql
 toc: true
 ads: true
 image:
-    teaser: ![teaser](http://ou529e3sj.bkt.clouddn.com/default.jpg)
+    teaser: /teaser/mysql01.png
 ---
 
 > optimize table在优化mysql    

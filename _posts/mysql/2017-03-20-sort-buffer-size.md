@@ -4,7 +4,7 @@ title:  "sort_buffer_size参数介绍"
 categories: mysql
 toc: true
 ads: true
-#    teaser: /teaser/default.jpg
+    teaser: /teaser/question.jpg
 ---  
 
 > sort_buffer_size 和 max_length_for_sort_data  
