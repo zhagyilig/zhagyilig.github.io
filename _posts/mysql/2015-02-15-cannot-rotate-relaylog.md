@@ -5,7 +5,7 @@ categories: mysql
 toc: true
 ads: true
 image:
-   teaser: /teaser/delete_relay.jpg
+   teaser: /teaser/mysql01.png
 ---
 
 > 本文介绍了一次运维实践中relay-log长期无法自动删除的原因和解决过程

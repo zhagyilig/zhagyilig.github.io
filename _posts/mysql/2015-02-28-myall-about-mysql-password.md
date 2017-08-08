@@ -7,7 +7,7 @@ categories: mysql
 tags: [mysql, password]
 image:
 #  feature:
-  teaser: /teaser/password.jpg
+  teaser: /teaser/mysql01.png
 #  thumb:
 date: 2015-02-28T01:16:51+08:00
 ---

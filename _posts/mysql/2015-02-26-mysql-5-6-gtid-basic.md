@@ -8,7 +8,7 @@ toc: true
 tags: [gtid, 5.6]
 image:
 #  feature:
-    teaser: /teaser/gtid.png
+    teaser: /teaser/mysql01.png
 #  thumb:
 date: 2015-02-26T17:12:48+08:00
 ---

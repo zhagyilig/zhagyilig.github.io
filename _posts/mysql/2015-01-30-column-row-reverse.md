@@ -5,7 +5,7 @@ categories: mysql
 toc: true
 ads: true
 image:
-    teaser: /teaser/row_col_rotate.jpg
+    teaser: /teaser/mysql01.png
 ---
 
 
