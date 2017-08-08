@@ -135,7 +135,7 @@ MYSQL忽略索引
 {% endraw %}
 {% endhighlight %}
 
-**总的来说，我们只需要关注结果中的几列：**
+**总的来说，我们只需要关注结果中的几列：**  
 type  
 key   
 key_len   
