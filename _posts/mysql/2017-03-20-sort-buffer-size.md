@@ -4,6 +4,7 @@ title:  "sort_buffer_size参数介绍"
 categories: mysql
 toc: true
 ads: true
+image:
     teaser: /teaser/question.jpg
 ---  
 
