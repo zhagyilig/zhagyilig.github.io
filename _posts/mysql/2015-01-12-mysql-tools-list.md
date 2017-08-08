@@ -3,7 +3,7 @@ layout: article
 title:  "MySQL工具汇总"
 categories: mysql
 image:
-    teaser: /mysql/mysql-tool.jpg
+    teaser: /teaser/mysql01.png
 ---
 
 > 收录了MySQL相关有用的工具。工具包含：性能测试，状态分析，SQL路由等方面

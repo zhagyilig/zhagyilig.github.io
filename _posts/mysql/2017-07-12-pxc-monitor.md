@@ -4,7 +4,7 @@ title:  "pxc集群线上监控的指标"
 categories: mysql
 toc: true
 ads: true
-	teaser: ![pxc](http://ou529e3sj.bkt.clouddn.com/pxc.png)
+	teaser: /teaser/mysql01.png
 ---  
 
 > pxc集群线上监控的指标

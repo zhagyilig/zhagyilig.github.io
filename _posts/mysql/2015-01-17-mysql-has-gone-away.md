@@ -5,7 +5,7 @@ categories: mysql
 toc: true
 ads: true
 image:
-    teaser: /teaser/mysql_has_gone_away.png
+    teaser: /teaser/mysql01.png
 ---
 
 > 本文将总结和汇总MySQL Server has gone away这类报错发生的原因

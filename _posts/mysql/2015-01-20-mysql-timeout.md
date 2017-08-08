@@ -4,8 +4,8 @@ title:  "MySQL timeout相关参数解析和测试"
 categories: mysql
 toc: true
 ads: true
-#image:
-#    teaser: /teaser/default.jpg
+image:
+    teaser: /teaser/mysql01.png
 ---
 
 
