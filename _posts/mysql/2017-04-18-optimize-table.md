@@ -1,11 +1,7 @@
 ---
 layout: article
-<<<<<<< HEAD
-title:  "optimize优化mysql"
-=======
 title: "optimize优化mysql"
 modified:
->>>>>>> b4ec488543c688de55cff98d30fccc760d6e3713
 categories: mysql
 toc: true
 ads: true
