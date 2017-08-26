@@ -4,6 +4,7 @@ title:  "haproxy安装到启动"
 categories: linux
 toc: true
 ads: true
+image:
     teaser: /teaser/haproxy.jpg
 ---  
 
