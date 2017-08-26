@@ -7,7 +7,7 @@ categories: mysql
 #tags: []
 image:
 #    feature: /teaser/xxx
-    teaser: /teaser/mysql01.png
+    teaser: /teaser/xyz.jpg
 #    thumb:
 date: 2015-03-05T15:44:52+08:00
 ---

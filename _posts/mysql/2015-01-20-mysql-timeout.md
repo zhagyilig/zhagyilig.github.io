@@ -5,7 +5,7 @@ categories: mysql
 toc: true
 ads: true
 image:
-    teaser: /teaser/mysql01.png
+    teaser: /teaser/timeout.jpg
 ---
 
 
