@@ -5,7 +5,7 @@ categories: mysql
 toc: true
 ads: true
 image:
-    teaser: /teaser/mysql01.png
+    teaser: /teaser/percona.jpg
 ---  
 
 > Percona XtraDB Cluster集群status监控指标介绍

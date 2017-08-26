@@ -5,7 +5,7 @@ categories: mysql
 toc: true
 ads: true
 image:
-    teaser: /teaser/mysql01.png
+    teaser: /teaser/book.jpg
 ---
 
 > 本文罗列了一些适用于MySQL及运维入门和进阶使用的书籍。
