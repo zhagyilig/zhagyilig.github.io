@@ -4,7 +4,7 @@ title:  "haproxy安装到启动"
 categories: linux
 toc: true
 ads: true
-#    teaser: /teaser/default.jpg
+    teaser: /teaser/haproxy.jpg
 ---  
 
 > haproxy基础,pxc集群高可用
