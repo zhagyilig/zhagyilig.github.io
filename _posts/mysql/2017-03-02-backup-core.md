@@ -4,7 +4,7 @@ title: "数据备份意识"
 modified:
 categories: mysql
 image:
-    teaser: /teaser/question.jpg
+    teaser: /teaser/backup.jpg
 ---
 
 > No one cares if you can backup， only that you can restore.  

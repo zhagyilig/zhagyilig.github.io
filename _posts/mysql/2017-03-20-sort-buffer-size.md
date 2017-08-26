@@ -5,7 +5,7 @@ categories: mysql
 toc: true
 ads: true
 image:
-    teaser: /teaser/question.jpg
+    teaser: /teaser/mysql5.7.jpg
 ---  
 
 > sort_buffer_size 和 max_length_for_sort_data  

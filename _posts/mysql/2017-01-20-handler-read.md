@@ -5,7 +5,7 @@ categories: mysql
 toc: true
 ads: true
 image:
-    teaser: /teaser/question.jpg
+    teaser: /teaser/mysql01.png
 ---  
 
 > Handler_read_*，它们显示了数据库处理SELECT查询语句的状态，对于调试SQL语句有很大意义，本文简单介绍下。
