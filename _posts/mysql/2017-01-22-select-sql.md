@@ -8,10 +8,6 @@ image:
     teaser: /mysql/select.jpg
 ---  
 
-> select 语法介绍  
-
----
-
 [原文连接](https://en.wikibooks.org/wiki/SQL_Exercises/The_computer_store#Sample_dataset)
 ## 测试数据
 {% highlight mysql %}
