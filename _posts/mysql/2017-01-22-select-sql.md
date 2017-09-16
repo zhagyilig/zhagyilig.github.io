@@ -6,7 +6,7 @@ toc: true
 ads: true
 image:
     teaser: /mysql/select.jpg
----  
+---  
 
 [原文连接](https://en.wikibooks.org/wiki/SQL_Exercises/The_computer_store#Sample_dataset)  
 
