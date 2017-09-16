@@ -8,7 +8,7 @@ permalink: /about/
 
 ---
 ##### 友情链接:
-[老男孩](http://oldboy.blog.51cto.com/)
+[老男孩](http://oldboy.blog.51cto.com/)  
 [MySQL中文网 叶金荣](http://imysql.com/)    
 [吴炳锡](http://wubx.net/)
 
