@@ -12,7 +12,7 @@ permalink: /about/
 [**吴炳锡**](http://wubx.net/)
 
 ##### BLOG：
-[**MySQL Server Blog**](http://mysqlserverteam.com/)
-[**MySQL Server**](https://dev.mysql.com/doc/refman/)
-[**Planet MySQL**](https://planet.mysql.com/zh/)
-[**Percona Blog**](https://www.percona.com/blog/)
+[**MySQL Server Blog**](http://mysqlserverteam.com/)    
+[**MySQL Server**](https://dev.mysql.com/doc/refman/)    
+[**Planet MySQL**](https://planet.mysql.com/zh/)    
+[**Percona Blog**](https://www.percona.com/blog/)    
