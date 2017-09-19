@@ -10,8 +10,9 @@ permalink: /about/
 ##### 友情链接:
 [老男孩](http://oldboy.blog.51cto.com/)  
 [叶金荣](http://imysql.com/)    
-[吴炳锡](http://wubx.net/)
+[吴炳锡](http://wubx.net/)  
 
+--- 
 ##### BLOG：
 [MySQL Server Blog](http://mysqlserverteam.com/)    
 [MySQL Server](https://dev.mysql.com/doc/refman/)    
