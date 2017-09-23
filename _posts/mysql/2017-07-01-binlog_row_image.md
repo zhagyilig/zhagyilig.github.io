@@ -5,11 +5,10 @@ categories: mysql
 toc: true
 ads: true
 ---  
-> 官方:https://dev.mysql.com/doc/refman/5.6/en/replication-options-binary-log.html     
----  
+> 官方:https://dev.mysql.com/doc/refman/5.6/en/replication-options-binary-log.html  
 {% highlight mysql %}
 {% raw %}
-binlog_format=ROW 格式记录的是每一行的变更，会带来磁盘IO上的开销，同时由于binlog日志变大，网络开销也变大。那么在MySQL 5.6以后binlog的格式默认就是ROW了，同时引入了新的参数binlog_row_image，这个参数默认值是FULL，其还有两个值是minimal,noblob;FULL记录每一行的变更，minimal只记录影响后的行,noblob记录所有列，不需要的BLOB和TEXT列。下面通过简单的一下例子理解下参数。 
+binlog_format=ROW 格式记录的是每一行的变更，会带来磁盘IO上的开销，同时由于binlog日志变大，网络开销也变大。那么在MySQL 5.6以后binlog的格式默认就是ROW了，同时引入了新的参数binlog_row_image，这个参数默认值是FULL，其还有两个值是minimal,noblob;FULL记录每一行的变更，minimal只记录影响后的行,noblob记录所有列，不需要的BLOB和TEXT列。下面通过简单的一下例子理解下参数。   
 {% endraw %}
 {% endhighlight %}  
 ## 测试数据
