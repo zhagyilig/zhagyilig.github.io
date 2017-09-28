@@ -6,8 +6,8 @@ image:
     teaser: /teaser/mysql rep.png
 ---
 
->发现MySQL的复制（replication）进度总是落后很多肿么办？  
->MySQL复制（replication）是否有延迟，延迟多厉害，只看Seconds_Behind_Master是否可靠？  
+> 复制进度总是落后很多肿么办;是否有延迟，延迟多厉害,只看Seconds_Behind_Master是否可靠？     
+
   
 ### MySQL复制延迟很大怎么办
 一般而言，slave相对master延迟较大，其根本原因就是slave上的复制线程没办法真正做到并发。
