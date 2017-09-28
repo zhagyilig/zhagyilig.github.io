@@ -6,7 +6,7 @@ image:
     teaser: /teaser/mysql rep.png
 ---
 
-> 复制进度总是落后很多肿么办;是否有延迟，延迟多厉害,只看Seconds_Behind_Master是否可靠？     
+> 复制进度总是落后很多肿么办;是否有延迟，延迟多厉害,只看SBM是否可靠？     
 
   
 ### MySQL复制延迟很大怎么办
