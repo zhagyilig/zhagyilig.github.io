@@ -1,12 +1,12 @@
 ---
 layout: article
-title:  "binlog_row_image参数测试"
+title:  "binlog_row_image"
 categories: mysql
 toc: true
 ads: true
 ---  
 
-> 官方:https://dev.mysql.com/doc/refman/5.6/en/replication-options-binary-log.html  
+> 对binlog_row_image实例总结
 
 {% highlight mysql %}
 {% raw %}
@@ -219,4 +219,6 @@ COMMIT/*!*/;
 {% endhighlight %}
 
 注意:     
-NDB Cluster不支持此变量; 设置它对日志记录没有影响 NDB。（错误＃16316828）   
+NDB Cluster不支持此变量; 设置它对日志记录没有影响 NDB。（错误＃16316828）    
+官方:https://dev.mysql.com/doc/refman/5.6/en/replication-options-binary-log.html    
+
