@@ -4,6 +4,8 @@ permalink: /
 title: "Latest Posts"
 image: 
     feature: cover.jpg
+    credit:
+    creditlink: 
 ---
 
 <div class="tiles">
