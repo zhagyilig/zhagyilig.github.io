@@ -18,4 +18,8 @@ permalink: /about/
 [MySQL Server Blog](http://mysqlserverteam.com/)      
 [MySQL Server](https://dev.mysql.com/doc/refman/)    
 [Planet MySQL](https://planet.mysql.com/zh/)    
-[Percona Blog](https://www.percona.com/blog/)    
+[Percona Blog](https://www.percona.com/blog/)      
+
+[知数堂 - 最靠谱、最有品质的培训品牌](http://zhishutang.com/)    
+加入知数堂技术交流QQ群:579036588
+
