@@ -1,0 +1,102 @@
+---
+layout: article
+title: "Percona审计插件介绍"
+modified:
+categories: mysql
+toc: true
+image:
+    teaser: /teaser/mysql01.png
+---
+> Percona Audit Log Plugin介绍
+
+---  
+Percona审计日志插件提供了数据库执行的连接和查询活动的监控记录，相关的信息将被记录在XML文件中，    
+每一个事件都有一个NAME字段和唯一的RECORD_ID和 TIMESTAMP字段， MySQL官方目前只有企业版才集成了审计日志功能。    
+
+### 开启审计功能     
+安装审计审计插件可以通过添加配置文件重启数据库加载，也可以动态安装。   
+{% highlight mysql %}
+{% raw %}
+# 配置文件加载
+[mysqld]  
+plugin-load=audit_log.so
+
+# 加载插件列表
+mysql> INSTALL PLUGIN audit_log SONAME 'audit_log.so';
+审计日志事件介绍
+
+Audit
+表示审计日志开始或结束。当NAME字段为'Audit'表示开始审计日志；'NoAudit'表示结束审计日志，此外还记录了服务器版本和命令行参数
+Audit事件示例如下
+
+Connect/Disconnect
+记录用户连接断开信息。当NAME字段为'Connect'表示用户连接成功或失败；'Quit'表示连接断开，此外还记录了CONNECTION_ID, STATUS, USER, PRIV_USER, OS_LOGIN, PROXY_USER, HOST, and IP。STATUS为0表示成功，非0表示失败。
+Connect/Disconnect事件示例如下
+
+Query
+记录DML、DDL信息，NAME值可能为Query, Prepare, Execute, Change user等。此外还记录COMMAND_CLASS(sql/mysqld.cc文件中的com_status_vars值), CONNECTION_ID, STATUS, SQLTEXT (sql语句信息), USER, HOST, OS_USER, IP。
+Query事件示例如下：
+{% endraw %}
+{% endhighlight %}
+
+### 参数介绍  
+{% highlight mysql %}
+{% raw %}
+mysql> show variables like '%audit%';
++---------------------------+---------------+
+| Variable_name             | Value         |
++---------------------------+---------------+
+| audit_log_buffer_size     | 1048576       |
+| audit_log_file            | audit.log     |
+| audit_log_flush           | OFF           |
+| audit_log_format          | OLD           |
+| audit_log_handler         | FILE          |
+| audit_log_policy          | ALL           |
+| audit_log_rotate_on_size  | 0             |
+| audit_log_rotations       | 0             |
+| audit_log_strategy        | ASYNCHRONOUS  |
+| audit_log_syslog_facility | LOG_USER      |
+| audit_log_syslog_ident    | percona-audit |
+| audit_log_syslog_priority | LOG_INFO      |
++---------------------------+---------------+
+12 rows in set (0.00 sec)
+audit_log_format    
+日志格式：OLD, NEW, JSON, 和 CSV。  
+
+audit_log_buffer_size
+审计缓存，建议设置为4096的倍数，该参数只有在audit_log_strategy为ASYNCHRONOUS时生效。
+
+audit_log_flush
+控制审计日志的归档，只有在audit_log_rotate_on_size=0的时候生效，在手工重命名审计日志归档后，可以指定audit_log_flush=1来生成新的审计日志。
+
+audit_log_policy
+指定审计日志记录的事件
+ALL - 记录所有事件
+LOGINS - 只记录登录连接信息
+QUERIES - 只记录查询事件
+NONE - 不记录任何事件
+
+audit_log_strategy
+指定审计日志的刷新策略，只有在 audit_log_handler 为 'FILE'时该变量才生效。
+ASYNCHRONOUS - 异步(默认)，使用内存缓冲区，缓冲区满时不删除消息
+PERFORMANCE - 使用内存缓冲区，缓冲区满时删除消息
+SEMISYNCHRONOUS - 直接写入到文件中，通过操作系统刷新同步事件
+SYNCHRONOUS - 直接写入到文件中，实时同步刷新事件
+
+audit_log_file
+指定审计日志路径及文件名称，路径可为相对路径或绝对路径
+
+audit_log_buffer_size
+审计日志缓冲区大小，当audit_log_strategy生效且设置为ASYNCHRONOUS、PERFORMANCE时生效
+
+audit_log_rotate_on_size
+指定最大审核日志大小
+
+audit_log_rotations
+指定保存审核日志个数
+
+audit_log_handler
+指定审核日志保存格式：FILE、SYSLOG  
+{% endraw %}
+{% endhighlight %}  
+
