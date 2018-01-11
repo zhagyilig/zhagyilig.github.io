@@ -21,7 +21,7 @@ permalink: /about/
 [Percona Blog](https://www.percona.com/blog/)      
 
 ---  
-##### 知数堂    
-[MySQL最靠谱、最有品质的培训](http://zhishutang.com/)           
+##### 知数堂:     
+[MySQL最靠谱、最有品质的培训](http://zhishutang.com/)                   
 加入知数堂技术交流QQ群: **579036588**
 
