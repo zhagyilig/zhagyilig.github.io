@@ -1,0 +1,91 @@
+---
+layout: article
+title:  "filebeat+logstash+es"
+categories: linux
+toc: true
+---
+
+> 从之前的实践观察下logstash的启动，logstash依赖于java环境，比较重，如果每台客户端都部署的话相对麻烦。因此引进了filebeat，filebeat不依赖于java，轻量，易部署。
+
+### 环境  
+系统|软件|版本
+|-|-|
+ubuntu14.04|logstash|6.3.0
+ubuntu14.04|elasticsearch|6.3.0
+centos6.7|filebeat|6.3.0
+
+### 说明
+通过filebeat采集nginx日志（已配置为json格式，之后直接输出到logstash。
+日志格式如下：
+{% highlight mysql %}
+{% raw %}
+        log_format log_json '{"timestamp": "$time_local", '  
+                            '"request_addr": "$http_host", '  
+                            '"server_addr": "$server_addr", ' 
+			    '"remote_addr": "$remote_addr", '
+                            '"referer": "$http_referer", '
+                            '"request": "$request", '
+                            '"status": $status, '
+                            '"bytes": $body_bytes_sent, '
+                            '"agent": "$http_user_agent", '
+                            '"x_forwarded": "$http_x_forwarded_for", '
+                            '"up_addr": "$upstream_addr",'
+                            '"up_host": "$upstream_http_host",'
+                            '"up_resp_time": "$upstream_response_time",'
+                            '"request_time": "$request_time"'
+                            ' }';
+
+        #access_log  /usr/local/nginx/logs/nginx.access.log logstash;
+        access_log  /usr/local/nginx/logs/nginx-json-access.log log_json;
+{% endraw %}
+{% endhighlight %}
+
+### filebeat配置
+{% highlight mysql %}
+{% raw %}
+[root@zyl-node1 filebeat-6.3.0-linux-x86_64]# cat filebeat.yml
+filebeat:
+  prospectors:
+  - input_type: log
+    tail_files: true
+    backoff: "1s"
+    paths:
+        - /usr/local/nginx/logs/nginx-json-access.log
+
+output:
+  logstash:
+    hosts: ["172.16.18.130:5044"]
+{% endraw %}
+{% endhighlight %}
+
+### logstash配置
+{% highlight mysql %}
+{% raw %}
+root@study-zyl-node5:/usr/local/logstash/conf.d# cat logstash-filebeat.conf
+input {
+  beats {
+    host => '172.16.18.130'
+    port => 5044
+    codec => json
+  }
+}
+
+filter {
+}
+
+output{
+    elasticsearch {
+        hosts => ["172.16.18.130:9200"]
+        index => "nginx-access-json-filebeat-%{+YYYY.MM.dd}"
+    }
+     stdout {
+     }
+}
+{% endraw %}
+{% endhighlight %}
+
+
+
+
+
+
