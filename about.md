@@ -4,13 +4,17 @@ title: About
 permalink: /about/
 ---
 
-> Knowing WHAT is not enough, I need to know WHY.
+> Knowing WHAT is not enough, I need to know WHY.  
 
 ---
 ##### 友情链接:
 [老男孩](http://oldboy.blog.51cto.com/)  
 [叶金荣](http://imysql.com/)    
 [吴炳锡](http://wubx.net/)     
+
+---  
+##### Github:
+[https://github.com/zhagyilig](https://github.com/zhagyilig) 
 
 --- 
 ##### BLOG：
