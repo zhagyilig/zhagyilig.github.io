@@ -5,7 +5,7 @@ categories: python
 toc: true
 ads: true
 image:
-#    teaser: /teaser/decorator.jpg
+    teaser: /python/redis.jpeg
 ---
 
 > redis.exceptions.ResponseError: MOVED 5581
