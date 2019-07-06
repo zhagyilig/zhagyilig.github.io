@@ -4,11 +4,13 @@ title: About
 permalink: /about/
 ---
 
-> Knowing WHAT is not enough, I need to know WHY.  
+> Knowing WHAT is not enough, I need to know WHY.      
 
-### 走在大牛路上的一只小小菜鸟:)
+<br/> 
+<br/>     
 
----  
+### 走在大牛路上的一只小小菜鸟。   
+<br/>     
 
 ##### 友情链接:
 [老男孩](http://oldboy.blog.51cto.com/)  
