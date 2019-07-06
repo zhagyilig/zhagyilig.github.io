@@ -1,6 +1,6 @@
 ---
 layout: article
-title:  "django入门"
+title:  "django request"
 categories: python
 toc: true
 ads: true
