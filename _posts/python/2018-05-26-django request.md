@@ -1,6 +1,6 @@
 ---
 layout: article
-title:  "django request"
+title:  "Django HttpRequest"
 categories: python
 toc: true
 ads: true
