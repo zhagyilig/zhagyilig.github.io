@@ -12,6 +12,8 @@ permalink: /about/
 ### 走在大牛路上的一只小小菜鸟。   
 <br/>     
 
+---
+
 ##### 友情链接:
 [老男孩](http://oldboy.blog.51cto.com/)  
 [叶金荣](http://imysql.com/)    
