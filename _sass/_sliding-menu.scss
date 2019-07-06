@@ -90,14 +90,14 @@
 			@include font-size(32,no);
 			font-weight: 700;
 			@include media($medium) {
-				margin-left: 170px;
+				margin-left: 118px;
 			}
 		}
 		.excerpt {
 			color: $white;
 			margin-top: 0;
 			@include media($medium) {
-				margin-left: 170px;
+				margin-left: 118px;
 			}
 		}
 	}
