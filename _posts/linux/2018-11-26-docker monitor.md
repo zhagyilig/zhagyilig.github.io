@@ -18,7 +18,8 @@ image:
 - `cAdvisor` 可以对节点机器上的资源及容器进行实时监控和性能数据采集，包括 CPU 使用情况、内存使用情况、网络吞吐量及文件系统使用情况;
 - 使用 cAdvisor + Influxdb + Grafana 三大开源框架组成的 docker 服务群进行监控。
 
-### 三、架构图  
+### 三、架构图 
+- [图片来自](https://blog.csdn.net/huwh_/article/details/77918507)   
 ![cadvisor1]({{ site.url }}/images/linux/cadvisor1.png)
 
 ### 四、部署  
@@ -69,7 +70,7 @@ docker run -d --name grafana --net docker-monitor -p 3000:3000  grafana/grafana
 ![cadvisor2]({{ site.url }}/images/linux/cadvisor2.jpeg)   
 
 ### 项目地址   
-项目主页：(http://github.com/google/cadvisor](http://github.com/google/cadvisor)
+项目主页：[http://github.com/google/cadvisor](http://github.com/google/cadvisor)
 
 
 
